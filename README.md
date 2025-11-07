@@ -31,6 +31,8 @@ NIM: 1123150166
 
 ### Langkah 13: Menambahkan komentar di OTP Screen untuk memicu rebuild.
 
+### Langkah 14: Membuat fungsi verifikasi OTP hanya sebagai tampilan dan langsung navigasi ke Home Screen.
+
 ## Hasil Screenshot
 * ![Splash Screen](assets/images/splash.png)
 * ![Sign In](assets/images/signin.png)

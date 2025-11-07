@@ -50,16 +50,11 @@ class _OtpScreenState extends State<OtpScreen> {
 
   void _verifyOtp() {
     if (_formKey.currentState!.validate()) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Memverifikasi OTP...')),
+      // OTP is only for display, directly navigate to Home Screen
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const HomeScreen()),
       );
-      // Simulate OTP verification
-      Future.delayed(const Duration(seconds: 2), () {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => const HomeScreen()),
-        );
-      });
     }
   }
 
