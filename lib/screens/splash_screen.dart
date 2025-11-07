@@ -17,28 +17,16 @@ class SplashScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Modern Logo Element
-              Container(
-                width: 120,
-                height: 120,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white.withOpacity(0.9),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.2),
-                      blurRadius: 10,
-                      offset: const Offset(0, 5),
-                    ),
-                  ],
-                ),
-                child: Center(
-                  child: Icon(
-                    Icons.account_balance_wallet, // Changed icon for a more modern feel
-                    size: 60,
-                    color: Colors.teal.shade700,
-                  ),
-                ),
+              // Three Modern Icon Elements
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  _buildModernIcon(Icons.security, Colors.teal.shade700),
+                  const SizedBox(width: 20),
+                  _buildModernIcon(Icons.payments, Colors.teal.shade700),
+                  const SizedBox(width: 20),
+                  _buildModernIcon(Icons.analytics, Colors.teal.shade700),
+                ],
               ),
               const SizedBox(height: 20),
               const Text(
@@ -77,6 +65,31 @@ class SplashScreen extends StatelessWidget {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  static Widget _buildModernIcon(IconData iconData, Color color) {
+    return Container(
+      width: 80,
+      height: 80,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: Colors.white.withOpacity(0.9),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.2),
+            blurRadius: 8,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Center(
+        child: Icon(
+          iconData,
+          size: 40,
+          color: color,
         ),
       ),
     );

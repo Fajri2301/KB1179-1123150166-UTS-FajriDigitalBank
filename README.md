@@ -23,6 +23,8 @@ NIM: 1123150166
 
 ### Langkah 9: Menghapus debug banner dan memperbarui tampilan Splash Screen menjadi lebih modern.
 
+### Langkah 10: Memperbarui Splash Screen dengan 3 elemen ikon modern dan responsif.
+
 ## Hasil Screenshot
 * ![Splash Screen](assets/images/splash.png)
 * ![Sign In](assets/images/signin.png)
