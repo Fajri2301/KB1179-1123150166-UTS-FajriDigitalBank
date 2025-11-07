@@ -17,14 +17,27 @@ class SplashScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Placeholder for logo
-              CircleAvatar(
-                radius: 50,
-                backgroundColor: Colors.teal.shade100,
-                child: Icon(
-                  Icons.account_balance,
-                  size: 50,
-                  color: Colors.teal,
+              // Modern Logo Element
+              Container(
+                width: 120,
+                height: 120,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.white.withOpacity(0.9),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.2),
+                      blurRadius: 10,
+                      offset: const Offset(0, 5),
+                    ),
+                  ],
+                ),
+                child: Center(
+                  child: Icon(
+                    Icons.account_balance_wallet, // Changed icon for a more modern feel
+                    size: 60,
+                    color: Colors.teal.shade700,
+                  ),
                 ),
               ),
               const SizedBox(height: 20),

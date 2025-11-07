@@ -21,6 +21,8 @@ NIM: 1123150166
 
 ### Langkah 8: Menambahkan screenshot hasil aplikasi ke README.
 
+### Langkah 9: Menghapus debug banner dan memperbarui tampilan Splash Screen menjadi lebih modern.
+
 ## Hasil Screenshot
 * ![Splash Screen](assets/images/splash.png)
 * ![Sign In](assets/images/signin.png)
