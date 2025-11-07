@@ -10,3 +10,5 @@ NIM: 1123150166
 ### Langkah 2: Membuat file main.dart dengan konfigurasi Material 3 dan warna tema teal.
 
 ### Langkah 3: Membuat halaman Splash Screen dengan logo, teks, dan tombol lanjutkan.
+
+### Langkah 4: Membuat halaman Sign Up dengan form pendaftaran dan tombol “Daftar Sekarang”.
