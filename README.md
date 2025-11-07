@@ -25,6 +25,8 @@ NIM: 1123150166
 
 ### Langkah 10: Memperbarui Splash Screen dengan 3 elemen ikon modern dan responsif.
 
+### Langkah 11: Mengimplementasikan Splash Screen multi-halaman dengan gambar PNG, navigasi geser, dan tombol dinamis.
+
 ## Hasil Screenshot
 * ![Splash Screen](assets/images/splash.png)
 * ![Sign In](assets/images/signin.png)

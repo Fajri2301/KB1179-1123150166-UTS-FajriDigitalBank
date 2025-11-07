@@ -1,7 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:fajri_digital_bank/screens/signup_screen.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  final PageController _pageController = PageController();
+  int _currentPage = 0;
+
+  final List<Map<String, String>> splashData = [
+    {
+      "image": "assets/images/splash_1.png",
+      "title": "Selamat Datang di Fajri Digital Bank",
+      "subtitle": "Solusi keuangan digital dalam genggaman Anda",
+    },
+    {
+      "image": "assets/images/splash_2.png",
+      "title": "Keamanan Terjamin",
+      "subtitle": "Transaksi aman dengan teknologi enkripsi terkini",
+    },
+    {
+      "image": "assets/images/splash_3.png",
+      "title": "Mudah dan Cepat",
+      "subtitle": "Kelola keuangan Anda kapan saja, di mana saja",
+    },
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController.addListener(() {
+      setState(() {
+        _currentPage = _pageController.page!.round();
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,85 +56,124 @@ class SplashScreen extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // Three Modern Icon Elements
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
+          children: [
+            Expanded(
+              child: PageView.builder(
+                controller: _pageController,
+                itemCount: splashData.length,
+                itemBuilder: (context, index) => SplashContent(
+                  image: splashData[index]["image"]!,
+                  title: splashData[index]["title"]!,
+                  subtitle: splashData[index]["subtitle"]!,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 40.0),
+              child: Column(
                 children: [
-                  _buildModernIcon(Icons.security, Colors.teal.shade700),
-                  const SizedBox(width: 20),
-                  _buildModernIcon(Icons.payments, Colors.teal.shade700),
-                  const SizedBox(width: 20),
-                  _buildModernIcon(Icons.analytics, Colors.teal.shade700),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(
+                      splashData.length,
+                      (index) => buildDot(index: index),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () {
+                      if (_currentPage < splashData.length - 1) {
+                        _pageController.nextPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.ease,
+                        );
+                      } else {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => const SignUpScreen()),
+                        );
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.teal,
+                      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      minimumSize: const Size(double.infinity, 50), // Make button full width
+                    ),
+                    child: Text(
+                      _currentPage == splashData.length - 1 ? 'Daftar / Masuk' : 'Lanjutkan',
+                      style: const TextStyle(fontSize: 18, color: Colors.white),
+                    ),
+                  ),
                 ],
               ),
-              const SizedBox(height: 20),
-              const Text(
-                'Fajri Digital Bank',
-                style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
-              const SizedBox(height: 10),
-              const Text(
-                'Solusi keuangan digital dalam genggaman Anda',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.white70,
-                ),
-              ),
-              const SizedBox(height: 40),
-              ElevatedButton(
-                onPressed: () {
-                  // TODO: Navigate to next screen
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.teal,
-                  padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                ),
-                child: const Text(
-                  'Lanjutkan',
-                  style: TextStyle(fontSize: 18, color: Colors.white),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 
-  static Widget _buildModernIcon(IconData iconData, Color color) {
-    return Container(
-      width: 80,
-      height: 80,
+  AnimatedContainer buildDot({int? index}) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 200),
+      margin: const EdgeInsets.only(right: 5),
+      height: 6,
+      width: _currentPage == index ? 20 : 6,
       decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: Colors.white.withOpacity(0.9),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.2),
-            blurRadius: 8,
-            offset: const Offset(0, 4),
-          ),
-        ],
+        color: _currentPage == index ? Colors.teal : Colors.white,
+        borderRadius: BorderRadius.circular(3),
       ),
-      child: Center(
-        child: Icon(
-          iconData,
-          size: 40,
-          color: color,
+    );
+  }
+}
+
+class SplashContent extends StatelessWidget {
+  const SplashContent({
+    super.key,
+    required this.image,
+    required this.title,
+    required this.subtitle,
+  });
+
+  final String image;
+  final String title;
+  final String subtitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Image.asset(
+          image,
+          height: 250,
+          width: 250,
+          fit: BoxFit.contain,
         ),
-      ),
+        const SizedBox(height: 30),
+        Text(
+          title,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            fontSize: 28,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+        const SizedBox(height: 10),
+        Text(
+          subtitle,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            fontSize: 16,
+            color: Colors.white70,
+          ),
+        ),
+      ],
     );
   }
 }
