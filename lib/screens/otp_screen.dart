@@ -31,7 +31,7 @@ class _OtpScreenState extends State<OtpScreen> {
   void _startCountdown() {
     _countdown = 30;
     _canResend = false;
-    Future.periodic(const Duration(seconds: 1), (timer) {
+    dart.async.Future.periodic(const Duration(seconds: 1), (timer) {
       if (!mounted) {
         timer.cancel();
         return;
@@ -97,7 +97,7 @@ class _OtpScreenState extends State<OtpScreen> {
                       labelText: 'Kode OTP (6 digit)',
                       labelStyle: const TextStyle(color: Colors.white70),
                       filled: true,
-                      fillColor: Colors.white.withOpacity(0.2),
+                      fillColor: Colors.white.withAlpha((255 * 0.2).round()),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide: BorderSide.none,

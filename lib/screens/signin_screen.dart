@@ -29,6 +29,7 @@ class _SignInScreenState extends State<SignInScreen> {
       );
       // Simulate sign in
       Future.delayed(const Duration(seconds: 2), () {
+        if (!mounted) return; // Guard against BuildContext across async gaps
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const OtpScreen()),
@@ -68,10 +69,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
-                      labelText: 'Email',
-                      labelStyle: const TextStyle(color: Colors.white70),
-                      filled: true,
-                      fillColor: Colors.white.withOpacity(0.2),
+                      fillColor: Colors.white.withAlpha((255 * 0.2).round()),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide: BorderSide.none,
@@ -96,7 +94,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       labelText: 'Password',
                       labelStyle: const TextStyle(color: Colors.white70),
                       filled: true,
-                      fillColor: Colors.white.withOpacity(0.2),
+                      fillColor: Colors.white.withAlpha((255 * 0.2).round()),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide: BorderSide.none,

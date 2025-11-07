@@ -33,6 +33,8 @@ NIM: 1123150166
 
 ### Langkah 14: Membuat fungsi verifikasi OTP hanya sebagai tampilan dan langsung navigasi ke Home Screen.
 
+### Langkah 15: Memperbaiki error `Future.periodic` dan peringatan deprecated/BuildContext di OTP, Sign In, dan Sign Up Screens.
+
 ## Hasil Screenshot
 * ![Splash Screen](assets/images/splash.png)
 * ![Sign In](assets/images/signin.png)

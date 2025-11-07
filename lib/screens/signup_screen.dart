@@ -30,6 +30,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       );
       // Simulate sign up
       Future.delayed(const Duration(seconds: 2), () {
+        if (!mounted) return; // Guard against BuildContext across async gaps
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const SignInScreen()),
@@ -68,10 +69,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   TextFormField(
                     controller: _nameController,
                     decoration: InputDecoration(
-                      labelText: 'Nama Lengkap',
-                      labelStyle: const TextStyle(color: Colors.white70),
-                      filled: true,
-                      fillColor: Colors.white.withOpacity(0.2),
+                      fillColor: Colors.white.withAlpha((255 * 0.2).round()),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide: BorderSide.none,
@@ -93,7 +91,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       labelText: 'Email',
                       labelStyle: const TextStyle(color: Colors.white70),
                       filled: true,
-                      fillColor: Colors.white.withOpacity(0.2),
+                      fillColor: Colors.white.withAlpha((255 * 0.2).round()),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide: BorderSide.none,
@@ -118,7 +116,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       labelText: 'Password',
                       labelStyle: const TextStyle(color: Colors.white70),
                       filled: true,
-                      fillColor: Colors.white.withOpacity(0.2),
+                      fillColor: Colors.white.withAlpha((255 * 0.2).round()),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                         borderSide: BorderSide.none,
