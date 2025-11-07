@@ -27,6 +27,8 @@ NIM: 1123150166
 
 ### Langkah 11: Mengimplementasikan Splash Screen multi-halaman dengan gambar PNG, navigasi geser, dan tombol dinamis.
 
+### Langkah 12: Memperbaiki error `Future.periodic` di OTP Screen dengan menambahkan import `dart:async`.
+
 ## Hasil Screenshot
 * ![Splash Screen](assets/images/splash.png)
 * ![Sign In](assets/images/signin.png)

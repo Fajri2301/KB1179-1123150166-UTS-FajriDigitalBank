@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'dart:async';
 import 'package:fajri_digital_bank/screens/home_screen.dart'; // Will create this later
 
 class OtpScreen extends StatefulWidget {
