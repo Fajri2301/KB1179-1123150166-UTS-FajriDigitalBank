@@ -29,6 +29,8 @@ NIM: 1123150166
 
 ### Langkah 12: Memperbaiki error `Future.periodic` di OTP Screen dengan menambahkan import `dart:async`.
 
+### Langkah 13: Menambahkan komentar di OTP Screen untuk memicu rebuild.
+
 ## Hasil Screenshot
 * ![Splash Screen](assets/images/splash.png)
 * ![Sign In](assets/images/signin.png)
