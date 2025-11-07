@@ -12,3 +12,5 @@ NIM: 1123150166
 ### Langkah 3: Membuat halaman Splash Screen dengan logo, teks, dan tombol lanjutkan.
 
 ### Langkah 4: Membuat halaman Sign Up dengan form pendaftaran dan tombol “Daftar Sekarang”.
+
+### Langkah 5: Membuat halaman Sign In dengan navigasi ke halaman Sign Up.
